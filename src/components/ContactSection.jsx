@@ -16,18 +16,43 @@ export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+    const formData = new FormData(e.target);
+    formData.append("access_key", import.meta.env.VITE_EMAIL_API_KEY);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
       });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        e.target.reset();
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: data.message || "Something went wrong. Please try again.",
+        });
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
@@ -56,10 +81,10 @@ export const ContactSection = () => {
                 <div>
                   <h4 className="font-medium"> Email</h4>
                   <a
-                    href="mailto:hello@gmail.com"
+                    href="mailto:abishakeparthi4@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    hello@gmail.com
+                    abishakeparthi4@gmail.com
                   </a>
                 </div>
               </div>
@@ -70,10 +95,10 @@ export const ContactSection = () => {
                 <div>
                   <h4 className="font-medium"> Phone</h4>
                   <a
-                    href="tel:+11234567890"
+                    href="tel:9025772291"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    +1 (123) 456-7890
+                    9025772291
                   </a>
                 </div>
               </div>
@@ -84,7 +109,7 @@ export const ContactSection = () => {
                 <div>
                   <h4 className="font-medium"> Location</h4>
                   <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Vancouver, BC, Canada
+                    Chennai, Tamil Nadu, India
                   </a>
                 </div>
               </div>
@@ -93,7 +118,7 @@ export const ContactSection = () => {
             <div className="pt-8">
               <h4 className="font-medium mb-4"> Connect With Me</h4>
               <div className="flex space-x-4 justify-center">
-                <a href="#" target="_blank">
+                <a href="linkedin.com/in/abishake-parthi" target="_blank">
                   <Linkedin />
                 </a>
                 <a href="#" target="_blank">
@@ -109,13 +134,10 @@ export const ContactSection = () => {
             </div>
           </div>
 
-          <div
-            className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}
-          >
+          <div className="bg-card p-8 rounded-lg shadow-xs">
             <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="name"
@@ -130,7 +152,7 @@ export const ContactSection = () => {
                   name="name"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="Pedro Machado..."
+                  placeholder="Abishak Parthi..."
                 />
               </div>
 
@@ -148,7 +170,7 @@ export const ContactSection = () => {
                   name="email"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="john@gmail.com"
+                  placeholder="abishakeparthi4@gmail.com"
                 />
               </div>
 
