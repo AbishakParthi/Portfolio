@@ -21,8 +21,8 @@ export const HeroSection = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-            Third-year BCA student passionate about building efficient and user-friendly digital solutions.
-            Focused on turning ideas into functional applications through clean code and creative thinking.
+            BCA graduate passionate about building efficient and user-friendly digital solutions. 
+            Dedicated to turning ideas into functional applications through clean code, creative thinking, and a commitment to continuous learning and innovation.
           </p>
 
           <div className="pt-4 opacity-0 animate-fade-in-delay-4">

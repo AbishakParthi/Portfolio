@@ -12,21 +12,16 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
-              Aspiring Software Developer
+              Aspiring Software Engineer
             </h3>
 
             <p className="text-muted-foreground">
-              Final-year BCA student with a solid foundation in programming, web
-              development, and database management. Passionate about designing and developing practical, userfocused software solutions. Eager to contribute to real-world projects, continuously learn new
-              technologies, and grow within a dynamic and collaborative tech environment.
-
+                BCA graduate with a strong foundation in programming, web development, and database management. Passionate about designing and developing practical, user-focused software solutions. Committed to building scalable applications, continuously learning emerging technologies, and contributing effectively to real-world software development projects in a collaborative environment.
             </p>
 
             <p className="text-muted-foreground">
-              Software Developer (Self-Driven Projects):<br/>
-              Built multiple frontend applications with React and JavaScript, gaining hands-on experience in API
-              integration, state management, responsive UI, and creating interactive, user-focused web apps.
-
+              Software Developer (Self-Driven Projects):-<br/>
+                Developed multiple frontend applications using React and JavaScript, gaining hands-on experience in API integration, state management, responsive design, and building interactive, user-centric web applications. Experienced in writing clean, maintainable code and transforming ideas into functional, high-quality software solutions.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
